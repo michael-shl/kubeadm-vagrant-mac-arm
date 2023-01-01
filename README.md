@@ -8,10 +8,10 @@ please see https://gist.github.com/sbailliez/2305d831ebcf56094fd432a8717bed93.
 
 
 ### To set up local kubernetes cluster with kubeadm on AMD/Intel chip computer,
-please see https://github.com/techiescamp/vagrant-kubeadm-kubernetes/blob/main/Vagrantfile
+please see https://github.com/techiescamp/vagrant-kubeadm-kubernetes
 
 
 ### Reference Links:
 https://gist.github.com/sbailliez/2305d831ebcf56094fd432a8717bed93
 
-https://github.com/techiescamp/vagrant-kubeadm-kubernetes/blob/main/Vagrantfile
+https://github.com/techiescamp/vagrant-kubeadm-kubernetes
