@@ -32,13 +32,25 @@ kubeadm token create --print-join-command > $config_path/join.sh
 
 kubectl apply -f calico.yaml
 
-# Install Metrics Server
+# Update the taint to allow pods can be scheduled on control plane node
+kubectl taint nodes --all node-role.kubernetes.io/master-
 
-kubectl apply -f https://raw.githubusercontent.com/scriptcamp/kubeadm-scripts/main/manifests/metrics-server.yaml
+kubectl describe node | grep -i taint
+
+# Update the crictl configuration to fix Containerd out-of-date notation
+crictl config --set \
+runtime-endpoint=unix:///run/containerd/containerd.sock \
+--set image-endpoint=unix:///run/containerd/containerd.sock
+
+cat /etc/crictl.yaml
 
 # Install Kubernetes Dashboard
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.1/aio/deploy/recommended.yaml
+
+# Install Metrics Server
+
+# kubectl apply -f https://raw.githubusercontent.com/scriptcamp/kubeadm-scripts/main/manifests/metrics-server.yaml
 
 kubeadm config print init-defaults
 
